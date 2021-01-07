@@ -1,5 +1,5 @@
 {
-    "name": "com.toorah-games.variabnleui",
+    "name": "com.toorah-games.variableui",
     "version": "1.0.0",
     "displayName": "Variable UI",
     "description": "This Framework uses ScriptableObject Variables to bind values to UI",
