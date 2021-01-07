@@ -1,0 +1,12 @@
+{
+    "name": "com.toorah-games.variabnleui",
+    "version": "1.0.0",
+    "displayName": "Variable UI",
+    "description": "This Framework uses ScriptableObject Variables to bind values to UI",
+    "unity": "2020.1",
+    "author": {
+        "name": "Atahan Tugra Kiltan",
+        "email": "",
+        "url": ""
+    }
+}
