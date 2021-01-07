@@ -4,6 +4,9 @@
     "displayName": "Variable UI",
     "description": "This Framework uses ScriptableObject Variables to bind values to UI",
     "unity": "2020.1",
+    "dependencies": {
+        "com.unity.textmeshpro": "3.0.3"
+    },
     "author": {
         "name": "Atahan Tugra Kiltan",
         "email": "",
