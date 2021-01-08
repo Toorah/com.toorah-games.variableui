@@ -13,10 +13,13 @@ namespace Toorah.VariableUI
 
         protected override void Awake()
         {
-            value = m_variable.Value;
+            if (m_variable)
+            {
+                value = m_variable.Value;
 
-            m_variable.OnValueChanged.AddListener(SetValueWithoutNotify);
-            onValueChanged.AddListener(v => m_variable.Value = v);
+                m_variable.OnValueChanged.AddListener(SetValueWithoutNotify);
+                onValueChanged.AddListener(v => m_variable.Value = v);
+            }
         }
 
     }
