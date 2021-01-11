@@ -7,21 +7,22 @@ using UnityEngine.UI;
 namespace Toorah.VariableUI
 {
 
-    public class VarSlider : Slider
+    public class VarSlider : VarUIDriver<Slider, FloatVariable>
     {
-        [SerializeField] FloatVariable m_variable;
 
-        protected override void Awake()
+        protected override void BindUI()
         {
-            if (m_variable)
-            {
-                value = m_variable.Value;
+            m_ui.value = m_variable.Value;
 
-                m_variable.OnValueChanged.AddListener(SetValueWithoutNotify);
-                onValueChanged.AddListener(v => m_variable.Value = v);
-            }
+            m_variable.OnValueChanged.AddListener(m_ui.SetValueWithoutNotify);
+            m_ui.onValueChanged.AddListener(m_variable.SetValue);
         }
 
+        protected override void UnBindUI()
+        {
+            m_variable.OnValueChanged.RemoveListener(m_ui.SetValueWithoutNotify);
+            m_ui.onValueChanged.RemoveListener(m_variable.SetValue);
+        }
     }
 
 }

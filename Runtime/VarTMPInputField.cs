@@ -6,19 +6,20 @@ using TMPro;
 
 namespace Toorah.VariableUI
 {
-    public class VarTMPInputField : TMP_InputField
+    public class VarTMPInputField : VarUIDriver<TMP_InputField, StringVariable>
     {
-        [SerializeField] StringVariable m_variable;
-
-        protected override void Awake()
+        protected override void BindUI()
         {
-            if (m_variable)
-            {
-                text = m_variable.Value;
+            m_ui.text = m_variable.Value;
             
-                m_variable.OnValueChanged.AddListener(SetTextWithoutNotify);
-                onValueChanged.AddListener(v => m_variable.Value = v);
-            }
+            m_variable.OnValueChanged.AddListener(m_ui.SetTextWithoutNotify);
+            m_ui.onValueChanged.AddListener(m_variable.SetValue);
+        }
+
+        protected override void UnBindUI()
+        {
+            m_variable.OnValueChanged.RemoveListener(m_ui.SetTextWithoutNotify);
+            m_ui.onValueChanged.RemoveListener(m_variable.SetValue);
         }
     }
 }
